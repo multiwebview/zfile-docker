@@ -24,8 +24,8 @@ RUN tag_name=$(curl -sX GET "https://api.github.com/repos/zhaojun1998/zfile/rele
 
 RUN chmod -R 777 /root/zfile/bin \
     && sed -i "1c #!/bin/sh" zfile/bin/*.sh \
-    && echo "tail -f /dev/null" >> zfile/bin/start.sh \
-    && echo "tail -f /dev/null" >> zfile/bin/restart.sh
+    && echo "tail -f /dev/null" >> /root/zfile/bin/start.sh \
+    && echo "tail -f /dev/null" >> /root/zfile/bin/restart.sh
 
 VOLUME [ "/root/.zfile/" ]
 

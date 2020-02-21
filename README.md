@@ -13,3 +13,5 @@ docker run -d --name zfile \
 vvision/zfile-docker
 ```
 
+Thanks for [zhaojun1998/zfile](https://github.com/zhaojun1998/zfile)
+
