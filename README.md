@@ -4,7 +4,6 @@
 
 ## Usage
 
-- Only tested for Microsoft Onedrive
 
 ```shell
 docker run -d --name zfile \
