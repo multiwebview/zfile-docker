@@ -1,0 +1,21 @@
+name: build and push
+
+on: 
+  schedule:
+    - cron: "* 1 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        publish_date=$(curl -sX GET "https://api.github.com/repos/zhaojun1998/zfile/releases/latest" | awk '/published_at/{print $4;exit}' FS='[""]')
+        build_date=$(curl -sX GET "https://hub.docker.com/v2/repositories/vvision/zfile-docker/" | grep -oP '(?<="last_updated": ")[^"]*' | cut -d '.' -f1 | awk '{print $1"Z"}')
+        if [ $publish_date \> $build_date ]
+          then
+            curl -X POST ${{ secrets.TRIGGER }}
+          else
+            echo up to date 
+        fi
