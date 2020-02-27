@@ -1,7 +1,7 @@
 FROM alpine
 LABEL "AUTHOR" "multiwebview"
 LABEL "VERSION" "0.0.1"
-ENV REFRESHED_AT "2020-02-21"
+ENV REFRESHED_AT "2020-02-27"
 
 WORKDIR /root
 
@@ -22,13 +22,12 @@ RUN tag_name=$(curl -sX GET "https://api.github.com/repos/zhaojun1998/zfile/rele
     && rm -rf ${file_name} \
     && apk del curl unzip
 
-RUN chmod -R 777 /root/zfile/bin \
+RUN chmod -R 777 /root/zfile/* \
     && sed -i "1c #!/bin/sh" zfile/bin/*.sh \
     && echo "tail -f /dev/null" >> /root/zfile/bin/start.sh \
     && echo "tail -f /dev/null" >> /root/zfile/bin/restart.sh
 
-VOLUME [ "/root/.zfile/" ]
-VOLUME [ "/root/zfile/" ]
+VOLUME [ "/root/.zfile/"]
 
 EXPOSE 8080
 
