@@ -28,6 +28,7 @@ RUN chmod -R 777 /root/zfile/bin \
     && echo "tail -f /dev/null" >> /root/zfile/bin/restart.sh
 
 VOLUME [ "/root/.zfile/" ]
+VOLUME [ "/root/zfile/" ]
 
 EXPOSE 8080
 
