@@ -8,7 +8,8 @@
 ```shell
 docker run -d --name zfile \
 -p 8080:8080 \
--v ~/zfile/:/root/.zfile/ \
+-v ~/zfile/log/:/root/.zfile/ \
+-v ~/zfile/conf/:/root/zfile/ \
 --restart=always \
 vvision/zfile-docker
 ```
